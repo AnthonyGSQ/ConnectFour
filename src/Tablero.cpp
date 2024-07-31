@@ -10,10 +10,9 @@ tablero::tablero(int size_) { this->size = size_; };
 
 void tablero::GeneracionTablero() {
     if (size < 4) {
-        cout << "El tablero solicitado imposibilita jugar ConnectFour, pruebe "
-                "con un tamaño superior o igual a 4"
-             << endl;
-        return;
+        throw runtime_error(
+            "El tablero solicitado es demaciado pequeño, pruebe con un tamaño "
+            "superior a 3");
     }
     table.resize(size, vector<char>(size));
     cout << "ASD" << endl;
@@ -42,6 +41,12 @@ void tablero::GeneracionTablero() {
     cout << "+\n";
 }
 void tablero::InsertarFicha(char color, int columna) {
+    columna -= 1;
+    if (columna < 0) {
+        cout << "La posicion solicitada es invalida, intente con numeros "
+                "mayores a 0, porfavor"
+             << endl;
+    }
     if (columna > size) {
         cout << "Posicion invalida" << endl;
         return;
@@ -50,4 +55,10 @@ void tablero::InsertarFicha(char color, int columna) {
         cout << "La columna marcada esta llena" << endl;
         return;
     }
+    // TODO: cambiar logica para el tope de la columna
+    int top = 0;
+    table[top][columna];
 }
+int tablero::getSize() { return size; }
+char tablero::getColor() { return color; }
+vector<vector<char>> tablero::getTable() { return table; }

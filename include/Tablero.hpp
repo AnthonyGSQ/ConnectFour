@@ -14,4 +14,7 @@ class tablero {
     tablero(int size_);
     void GeneracionTablero();
     void InsertarFicha(char color, int columna);
+    int getSize();
+    char getColor();
+    std::vector<std::vector<char>> getTable();
 };
