@@ -7,14 +7,13 @@
 class tablero {
    private:
     int size;
-    char color;
     std::vector<std::vector<char>> table;
 
    public:
     tablero(int size_);
     void GeneracionTablero();
     void InsertarFicha(char color, int columna);
+    void ImprimirTablero();
     int getSize();
-    char getColor();
     std::vector<std::vector<char>> getTable();
 };

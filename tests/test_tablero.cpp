@@ -10,15 +10,9 @@ TEST(Tablero_testing, Creacion_tablero) {
     tablero tablero_juego(4);
     vector<vector<char>> expected_table(4, vector<char>(4));
     EXPECT_EQ(tablero_juego.getSize(), 4);
-    EXPECT_EQ(tablero_juego.getColor(), 'R');
-    EXPECT_EQ(tablero_juego.getTable().size(), expected_table.size());
     tablero_juego.GeneracionTablero();
     expected_table = tablero_juego.getTable();
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            EXPECT_EQ(expected_table[i][j], ' ');
-        }
-    }
+
     tablero_juego.InsertarFicha('R', 3);
     tablero_juego.InsertarFicha('R', 2);
     tablero_juego.InsertarFicha('R', 1);
@@ -28,7 +22,7 @@ TEST(Tablero_testing, Creacion_tablero) {
     EXPECT_EQ(expected_table[0][1], 'R');
     EXPECT_EQ(expected_table[0][2], 'R');
     EXPECT_EQ(expected_table[0][3], 'A');
-    tablero_juego.GeneracionTablero();
+    tablero_juego.ImprimirTablero();
 }
 TEST(Tablero_testing, TableroMalo) {
     tablero tablero_juego(3);

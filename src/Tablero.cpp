@@ -6,21 +6,9 @@
 #include <vector>
 
 using namespace std;
-tablero::tablero(int size_) { this->size = size_; };
+tablero::tablero(int size_) { size = size_; };
 
-void tablero::GeneracionTablero() {
-    if (size < 4) {
-        throw runtime_error(
-            "El tablero solicitado es demaciado pequeño, pruebe con un tamaño "
-            "superior a 3");
-    }
-    table.resize(size, vector<char>(size));
-    cout << "ASD" << endl;
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            table[i][j] = ' ';
-        }
-    }
+void tablero::ImprimirTablero() {
     cout << "Imprimiendo tablero: " << endl;
     for (int i = 0; i < size; ++i) {
         cout << "  ";
@@ -40,6 +28,21 @@ void tablero::GeneracionTablero() {
     }
     cout << "+\n";
 }
+
+void tablero::GeneracionTablero() {
+    if (size < 4) {
+        throw runtime_error(
+            "El tablero solicitado es demaciado pequeño, pruebe con un tamaño "
+            "superior a 3");
+    }
+    table.resize(size, vector<char>(size));
+    cout << "ASD" << endl;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            table[i][j] = ' ';
+        }
+    }
+}
 void tablero::InsertarFicha(char color, int columna) {
     columna -= 1;
     if (columna < 0) {
@@ -57,8 +60,7 @@ void tablero::InsertarFicha(char color, int columna) {
     }
     // TODO: cambiar logica para el tope de la columna
     int top = 0;
-    table[top][columna];
+    table[top][columna] = color;
 }
 int tablero::getSize() { return size; }
-char tablero::getColor() { return color; }
 vector<vector<char>> tablero::getTable() { return table; }
