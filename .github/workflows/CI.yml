@@ -1,9 +1,9 @@
 name: CI
 
-on: [pull_request,merge_group]
+on: [pull_request, merge_group]
 
 jobs:
-     format:
+    format:
          runs-on: ubuntu-24.04
          timeout-minutes: 5
          steps:
